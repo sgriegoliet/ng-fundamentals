@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~ngf-bootstrap/dist/bootstrap.min.css";
+@import "~toastr/build/toastr.min.css";
 
 .hoverwell:hover {
     background-color: #485563;
