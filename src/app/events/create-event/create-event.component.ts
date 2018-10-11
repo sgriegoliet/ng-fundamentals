@@ -20,4 +20,6 @@ export class CreateEventComponent{
     cancel(){
         this.router.navigate(['/events']);
     }
+
+    isDirty:boolean=true;
 }
