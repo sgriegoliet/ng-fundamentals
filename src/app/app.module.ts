@@ -5,11 +5,12 @@ import { EventsAppComponent } from './events-app.component';
 import { EventsListComponent } from './events/events-list.component';
 import { EventThumbnailComponent } from './events/event-thumbnail.component';
 import { NavbarComponent } from './nav/navbar.component';
-import {EventService} from './events/shared/event.service';
-import {ClientNotificationService} from './common/client-notification.service';
+import { EventService} from './events/shared/event.service';
+import { ClientNotificationService} from './common/client-notification.service';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
 import { RouterModule } from '@angular/router';
 import {appRoutes} from './routes';
+import { CreateEventComponent } from './events/create-event/create-event.component';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import {appRoutes} from './routes';
     EventsListComponent,
     EventThumbnailComponent,
     EventDetailsComponent,
+    CreateEventComponent,
     NavbarComponent
   ],
   bootstrap: [EventsAppComponent]
