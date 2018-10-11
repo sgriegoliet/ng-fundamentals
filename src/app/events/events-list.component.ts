@@ -8,7 +8,7 @@ import { ClientNotificationService } from '../common/client-notification.service
 })
 export class EventsListComponent implements OnInit{
     events:any[];
-    constructor(private eventService:EventService,private clientNoficationService:ClientNotificationService){
+    constructor(private eventService:EventService,private clientNotificationService:ClientNotificationService){
     }
 
     ngOnInit(){
@@ -16,6 +16,6 @@ export class EventsListComponent implements OnInit{
     }
 
     handleThumbnailClick(eventName){
-        this.clientNoficationService.success(eventName);
+        this.clientNotificationService.success(eventName);
     }
 }
