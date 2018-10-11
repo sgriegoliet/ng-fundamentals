@@ -1,21 +1,21 @@
-import {Component, OnInit} from '@angular/core'
-import { EventService } from './shared/event.service';
+import { Component, OnInit } from '@angular/core'
 import { ClientNotificationService } from '../common/client-notification.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-    selector:'events-list',
+    selector: 'events-list',
     templateUrl: 'events-list.component.html'
 })
-export class EventsListComponent implements OnInit{
-    events:any[];
-    constructor(private eventService:EventService,private clientNotificationService:ClientNotificationService){
+export class EventsListComponent implements OnInit {
+    events: any;
+    constructor(private route: ActivatedRoute, private clientNotificationService: ClientNotificationService) {
     }
 
-    ngOnInit(){
-        this.events = this.eventService.getEvents();
+    ngOnInit() {
+        this.events = this.route.snapshot.data['events'];
     }
 
-    handleThumbnailClick(eventName){
+    handleThumbnailClick(eventName) {
         this.clientNotificationService.success(eventName);
     }
 }
