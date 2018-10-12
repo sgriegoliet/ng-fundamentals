@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core'
 import { Resolve } from '@angular/router'
-import { EventService } from './shared/event.service';
 import { map } from 'rxjs/operators'
+import { Observable } from 'rxjs';
+
+import { IEvent, EventService } from './shared';
+
 
 @Injectable()
 export class EventListResolver implements Resolve<any>{
@@ -9,7 +12,7 @@ export class EventListResolver implements Resolve<any>{
 
     }
 
-    resolve() {
+    resolve() :Observable<IEvent[]> {
         return this.eventService.getEvents().pipe(map(events => events));
     }
 }

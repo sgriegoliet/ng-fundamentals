@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
-import { ClientNotificationService } from '../common/client-notification.service';
 import { ActivatedRoute } from '@angular/router';
+
+import { ClientNotificationService } from '../common';
 
 @Component({
     selector: 'events-list',

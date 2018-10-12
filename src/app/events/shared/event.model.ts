@@ -5,11 +5,7 @@ export interface IEvent {
     time: string;
     price: number;
     imageUrl: string;
-    location?: {
-        address: string;
-        city: string;
-        country: string;
-    }
+    location?: ILocation;
     onlineUrl?: string;
     sessions: ISession[];
 }
@@ -22,4 +18,10 @@ export interface ISession {
     level: string;
     abstract: string;
     voters: string[];
+}
+
+export interface ILocation{
+    address:string;
+    city:string;
+    country: string;
 }
