@@ -1,13 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
-import { EventsListComponent, EventThumbnailComponent, EventService, EventDetailsComponent, CreateEventComponent, EventRouteActivator, EventListResolver } from './events/index'
-import { ClientNotificationService } from './common/client-notification.service';
-import { RouterModule } from '@angular/router';
-import { appRoutes } from './routes';
-import { Error404Component } from './errors/404.component';
 import { EventsAppComponent } from './events-app.component';
-import { NavbarComponent } from './nav/navbar.component';
+import { appRoutes } from './routes';
+
+import { EventsListComponent, EventThumbnailComponent, EventService, EventDetailsComponent, CreateEventComponent, EventRouteActivator, EventListResolver } from './events/index'
+import { ClientNotificationService } from './common/index';
+import { Error404Component } from './errors/index';
+import { NavbarComponent } from './nav/index';
 
 @NgModule({
   imports: [
