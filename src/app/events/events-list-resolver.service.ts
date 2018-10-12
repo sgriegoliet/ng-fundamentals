@@ -12,7 +12,7 @@ export class EventListResolver implements Resolve<any>{
 
     }
 
-    resolve() :Observable<IEvent[]> {
+    resolve(): Observable<IEvent[]> {
         return this.eventService.getEvents().pipe(map(events => events));
     }
 }
