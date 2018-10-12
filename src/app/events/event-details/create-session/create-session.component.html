@@ -38,6 +38,7 @@
             <label for="abstract">Abstract:</label>
             <em *ngIf="!validate('abstract', 'required')">Required</em>
             <em *ngIf="!validate('abstract', 'maxlength')">Cannot exceed 400 characters</em>
+            <em *ngIf="!validate('abstract', 'restrictedWords')">Restricted words found: {{abstract?.errors.restrictedWords}}</em>
             <textarea id="abstract" rows=3 class="form-control" placeholder="abstract..."  formControlName="abstract" [ngClass]="{'error':!validate('abstract')}"  ></textarea>
         </div>
         <button type="submit" class="btn btn-primary" [disabled]="newSessionForm.invalid">Save</button>
