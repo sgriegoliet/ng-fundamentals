@@ -9,6 +9,7 @@ import { EventsListComponent, EventThumbnailComponent, EventService, EventDetail
 import { ClientNotificationService, IDirtyableComponent } from './common';
 import { Error404Component } from './errors';
 import { NavbarComponent } from './nav';
+import { AuthService } from './user';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { NavbarComponent } from './nav';
     ClientNotificationService,
     EventRouteActivator,
     EventListResolver,
-    { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState }
+    AuthService,
+    { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState },
   ],
   declarations: [
     EventsAppComponent,

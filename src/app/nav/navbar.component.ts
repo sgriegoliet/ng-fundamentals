@@ -1,10 +1,13 @@
-import {Component} from '@angular/core'
+import { Component } from '@angular/core'
+import { AuthService } from '../user';
 
 @Component({
-    selector:'navbar',
-    templateUrl:'navbar.component.html',
-    styleUrls:['navbar.component.css']
+    selector: 'navbar',
+    templateUrl: 'navbar.component.html',
+    styleUrls: ['navbar.component.css']
 })
-export class NavbarComponent{
+export class NavbarComponent {
+    constructor(private authService: AuthService) {
 
+    }
 }
