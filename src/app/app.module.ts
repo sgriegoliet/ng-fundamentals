@@ -6,7 +6,7 @@ import { EventsAppComponent } from './events-app.component';
 import { appRoutes } from './routes';
 
 import { EventsListComponent, EventThumbnailComponent, EventService, EventDetailsComponent, CreateEventComponent, EventRouteActivator, EventListResolver } from './events'
-import { ClientNotificationService } from './common';
+import { ClientNotificationService, IDirtyableComponent } from './common';
 import { Error404Component } from './errors';
 import { NavbarComponent } from './nav';
 
@@ -36,9 +36,9 @@ import { NavbarComponent } from './nav';
 export class AppModule { }
 
 
-export function checkDirtyState(component: CreateEventComponent) {
-  if (component.isDirty) {
-    return window.confirm('You have not saved this event, do you really want to cancel?');
+export function checkDirtyState(component: IDirtyableComponent) {
+  if (component.isDirty()) {
+    return window.confirm('You have not saved, do you really want to cancel?');
   }
   return true;
 }

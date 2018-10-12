@@ -1,8 +1,9 @@
-import {Component} from '@angular/core'
-import {Router} from '@angular/router'
+import { Component } from '@angular/core'
+import { Router } from '@angular/router'
+import { IDirtyableComponent } from '../../common';
 
 @Component({
-    template:`
+    template: `
         <h1>New Event</h1>
         <hr>
         <div class="col-md-6">
@@ -13,13 +14,13 @@ import {Router} from '@angular/router'
         </div>
     `
 })
-export class CreateEventComponent{
-    constructor(private router:Router){
+export class CreateEventComponent implements IDirtyableComponent {
+    constructor(private router: Router) {
 
     }
-    cancel(){
+    cancel() {
         this.router.navigate(['/events']);
     }
 
-    isDirty:boolean=true;
+    isDirty = () => { return true; };
 }
