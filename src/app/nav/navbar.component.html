@@ -27,6 +27,9 @@
             <a [routerLink]="['/user/login']" routerLinkActive="active" *ngIf="!authService.isAuthenticated()">Login</a>
             <a [routerLink]="['/user/profile']" routerLinkActive="active" *ngIf="authService.isAuthenticated()">Welcome {{authService.currentUser.firstName}}</a>
           </li>
+          <li *ngIf="authService.isAuthenticated()">
+              <a [routerLink]="['/user/login']" (click)="logout()">Logout</a>
+          </li>
         </ul>
       </div>
       <form id="searchForm" class="navbar-form navbar-right">

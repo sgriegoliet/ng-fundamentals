@@ -13,6 +13,10 @@ export class AuthService {
         }
     }
 
+    logoutUser(){
+        this.currentUser = null;
+    }
+
     isAuthenticated(){
         return !!this.currentUser;
     }
