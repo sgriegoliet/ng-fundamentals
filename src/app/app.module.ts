@@ -10,10 +10,13 @@ import { ClientNotificationService, IDirtyableComponent } from './common';
 import { Error404Component } from './errors';
 import { NavbarComponent } from './nav';
 import { AuthService } from './user';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
