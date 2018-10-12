@@ -6,18 +6,23 @@ export class AuthService {
     currentUser: IUser
     loginUser(userName: string, password: string) {
         this.currentUser = {
-            id:1,
+            id: 1,
             userName: userName,
             firstName: 'John',
             lastName: 'Papa'
         }
     }
 
-    logoutUser(){
+    updateCurrentUser(firstName: string, lastName: string) {
+        this.currentUser.firstName = firstName;
+        this.currentUser.lastName = lastName;
+    }
+
+    logoutUser() {
         this.currentUser = null;
     }
 
-    isAuthenticated(){
+    isAuthenticated() {
         return !!this.currentUser;
     }
 }
