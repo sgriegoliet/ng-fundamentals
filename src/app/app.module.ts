@@ -5,10 +5,10 @@ import { NgModule } from '@angular/core';
 import { EventsAppComponent } from './events-app.component';
 import { appRoutes } from './routes';
 
-import { EventsListComponent, EventThumbnailComponent, EventService, EventDetailsComponent, CreateEventComponent, EventRouteActivator, EventListResolver } from './events/index'
-import { ClientNotificationService } from './common/index';
-import { Error404Component } from './errors/index';
-import { NavbarComponent } from './nav/index';
+import { EventsListComponent, EventThumbnailComponent, EventService, EventDetailsComponent, CreateEventComponent, EventRouteActivator, EventListResolver } from './events'
+import { ClientNotificationService } from './common';
+import { Error404Component } from './errors';
+import { NavbarComponent } from './nav';
 
 @NgModule({
   imports: [
