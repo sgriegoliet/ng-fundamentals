@@ -7,11 +7,13 @@ import { EventService, IEvent } from '../shared';
     templateUrl:'event-details.component.html',
     styles:[
         ".event-image {height:100px;}",
-        ".container{padding-left:20px;padding-right:20px;}"
+        ".container{padding-left:20px;padding-right:20px;}",
+        "a {cursor:pointer}"
     ]
 })
 export class EventDetailsComponent implements OnInit{
     event: IEvent;
+    addMode:boolean=false;
 
     constructor(private eventService:EventService, private route:ActivatedRoute)
     {
@@ -20,5 +22,8 @@ export class EventDetailsComponent implements OnInit{
     ngOnInit(){
         const eventId = +this.route.snapshot.params['id'];
         this.event = this.eventService.getEvent(eventId);
+    }
+    addSession(){
+        this.addMode = true;
     }
 }

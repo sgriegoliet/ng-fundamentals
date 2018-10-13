@@ -4,6 +4,7 @@ import { ISession } from '../../shared';
 import { restrictedWords } from '../../../common';
 
 @Component({
+    selector:'create-session',
     templateUrl: 'create-session.component.html'
 })
 export class CreateSessionComponent implements OnInit {
