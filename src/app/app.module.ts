@@ -6,7 +6,7 @@ import { NgModule } from '@angular/core';
 import { EventsAppComponent } from './events-app.component';
 import { appRoutes } from './routes';
 
-import { EventsListComponent, EventThumbnailComponent, EventService, EventDetailsComponent, CreateEventComponent, EventRouteActivator, EventListResolver, CreateSessionComponent, SessionListComponent } from './events'
+import { EventsListComponent, EventThumbnailComponent, EventService, EventDetailsComponent, CreateEventComponent, EventRouteActivator, EventListResolver, CreateSessionComponent, SessionListComponent, DurationPipe } from './events'
 import { ClientNotificationService, IDirtyableComponent, CollapsibleWellComponent } from './common';
 import { Error404Component } from './errors';
 import { NavbarComponent } from './nav';
@@ -17,7 +17,7 @@ import { AuthService } from './user';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [
     EventService,
@@ -37,7 +37,8 @@ import { AuthService } from './user';
     NavbarComponent,
     CreateSessionComponent,
     SessionListComponent,
-    CollapsibleWellComponent
+    CollapsibleWellComponent,
+    DurationPipe
   ],
   bootstrap: [EventsAppComponent]
 })
