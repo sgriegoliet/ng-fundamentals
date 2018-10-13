@@ -7,7 +7,7 @@ import { EventsAppComponent } from './events-app.component';
 import { appRoutes } from './routes';
 
 import { EventsListComponent, EventThumbnailComponent, EventService, EventDetailsComponent, CreateEventComponent, EventRouteActivator, EventListResolver, CreateSessionComponent, SessionListComponent } from './events'
-import { ClientNotificationService, IDirtyableComponent } from './common';
+import { ClientNotificationService, IDirtyableComponent, CollapsibleWellComponent } from './common';
 import { Error404Component } from './errors';
 import { NavbarComponent } from './nav';
 import { AuthService } from './user';
@@ -36,7 +36,8 @@ import { AuthService } from './user';
     Error404Component,
     NavbarComponent,
     CreateSessionComponent,
-    SessionListComponent
+    SessionListComponent,
+    CollapsibleWellComponent
   ],
   bootstrap: [EventsAppComponent]
 })
