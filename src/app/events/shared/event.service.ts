@@ -7,7 +7,7 @@ import { IEvent } from './event.model';
 export class EventService {
   getEvents(): Observable<IEvent[]> {
     let subject = new Subject<IEvent[]>();
-    setTimeout(() => { subject.next(EVENTS); subject.complete(); }, 1000);
+    setTimeout(() => { subject.next(EVENTS); subject.complete(); }, 100);
     return subject;
   }
 
