@@ -1,4 +1,4 @@
-import { Injectable, InjectionToken } from '@angular/core'
+import { Injectable, InjectionToken, Inject } from '@angular/core'
 
 export let TOASTR_TOKEN: InjectionToken<IClientNotificationService> = new InjectionToken<IClientNotificationService>('toastr');
 
@@ -10,9 +10,8 @@ export interface IClientNotificationService {
 }
 
 @Injectable()
-export class ToastrService implements IClientNotificationService {
-    constructor(private toastr: IClientNotificationService) {
-
+export class ClientNotificationService implements IClientNotificationService {
+    constructor(@Inject(TOASTR_TOKEN) private toastr: IClientNotificationService) {
     }
 
     success(message: string, title?: string) {
