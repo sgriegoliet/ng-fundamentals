@@ -7,7 +7,7 @@ import { EventsAppComponent } from './events-app.component';
 import { appRoutes } from './routes';
 
 import { EventsListComponent, EventThumbnailComponent, EventService, EventDetailsComponent, CreateEventComponent, EventRouteActivator, EventListResolver, CreateSessionComponent, SessionListComponent, DurationPipe } from './events'
-import { IClientNotificationService, IDirtyableComponent, CollapsibleWellComponent, TOASTR_TOKEN, ClientNotificationService, IBrowserUIService, JQUERY_TOKEN, BrowserUIService } from './common';
+import { IClientNotificationService, IDirtyableComponent, CollapsibleWellComponent, TOASTR_TOKEN, ClientNotificationService, IBrowserUIService, JQUERY_TOKEN, BrowserUIService, SimpleModalComponent, ModalTriggerDirective } from './common';
 import { Error404Component } from './errors';
 import { NavbarComponent } from './nav';
 import { AuthService } from './user';
@@ -44,6 +44,8 @@ let jQuery: IBrowserUIService = window['$'];
     CreateSessionComponent,
     SessionListComponent,
     CollapsibleWellComponent,
+    SimpleModalComponent,
+    ModalTriggerDirective,
     DurationPipe
   ],
   bootstrap: [EventsAppComponent]

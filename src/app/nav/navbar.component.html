@@ -9,7 +9,8 @@
         <li>
           <a [routerLink]="['/events']" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}>All Events</a>
         </li>
-        <li><a [routerLink]="['/events/new']" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}>Create Event</a></li>
+        <li><a [routerLink]="['/events/new']" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}>Create
+            Event</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Events
             <span class="caret"></span>
@@ -25,10 +26,11 @@
         <ul class="nav navbar-nav">
           <li>
             <a [routerLink]="['/user/login']" routerLinkActive="active" *ngIf="!authService.isAuthenticated()">Login</a>
-            <a [routerLink]="['/user/profile']" routerLinkActive="active" *ngIf="authService.isAuthenticated()">Welcome {{authService.currentUser.firstName}}</a>
+            <a [routerLink]="['/user/profile']" routerLinkActive="active" *ngIf="authService.isAuthenticated()">Welcome
+              {{authService.currentUser.firstName}}</a>
           </li>
           <li *ngIf="authService.isAuthenticated()">
-              <a [routerLink]="['/user/login']" (click)="logout()">Logout</a>
+            <a [routerLink]="['/user/login']" (click)="logout()">Logout</a>
           </li>
         </ul>
       </div>
@@ -36,10 +38,18 @@
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search Sessions" [(ngModel)]="searchTerm" name="searchTerm">
         </div>
-        <button class="btn btn-default" >
+        <button class="btn btn-default" modal-trigger>
           Search
         </button>
       </form>
     </div>
   </div>
 </div>
+
+<simple-modal title="Matching Sessions">
+  <div class="list-group">
+    <a class="list-group-item" *ngFor="let session of foundSessions" [routerLink]="['/events', session.eventId]">
+      {{session.name}}
+    </a>
+  </div>
+</simple-modal>
