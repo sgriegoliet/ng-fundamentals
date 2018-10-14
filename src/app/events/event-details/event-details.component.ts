@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router'
 
 import { EventService, IEvent, ISession } from '../shared';
 
-enum FilterByOptions {
+export enum SessionFilterOptions {
     All = 1,
     Beginner = 2,
     Intermediate = 3,
@@ -22,8 +22,8 @@ enum FilterByOptions {
 export class EventDetailsComponent implements OnInit {
     event: IEvent;
     addMode: boolean = false;
-    filterBy: FilterByOptions = FilterByOptions.All;
-    FilterBy = FilterByOptions;
+    filterBy: SessionFilterOptions = SessionFilterOptions.All;
+    FilterBy = SessionFilterOptions;
 
     constructor(private eventService: EventService, private route: ActivatedRoute) {
     }
@@ -48,11 +48,11 @@ export class EventDetailsComponent implements OnInit {
         this.addMode = false;
     }
 
-    setFilterBy(filterBy: FilterByOptions) {
+    setFilterBy(filterBy: SessionFilterOptions) {
         this.filterBy = filterBy;
     }
 
-    isFilteredBy(filterBy: FilterByOptions): boolean {
+    isFilteredBy(filterBy: SessionFilterOptions): boolean {
         return this.filterBy === filterBy;
     }
 }
