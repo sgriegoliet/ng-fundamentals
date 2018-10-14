@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router';
 
-import { ClientNotificationService } from '../common';
 import { IEvent } from './shared';
 
 @Component({
@@ -10,7 +9,7 @@ import { IEvent } from './shared';
 })
 export class EventsListComponent implements OnInit {
     events: IEvent[];
-    constructor(private route: ActivatedRoute, private clientNotificationService: ClientNotificationService) {
+    constructor(private route: ActivatedRoute) {
     }
 
     ngOnInit() {
@@ -18,6 +17,5 @@ export class EventsListComponent implements OnInit {
     }
 
     handleThumbnailClick(eventName) {
-        this.clientNotificationService.success(eventName);
     }
 }
