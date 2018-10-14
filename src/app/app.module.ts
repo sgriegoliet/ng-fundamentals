@@ -7,12 +7,13 @@ import { EventsAppComponent } from './events-app.component';
 import { appRoutes } from './routes';
 
 import { EventsListComponent, EventThumbnailComponent, EventService, EventDetailsComponent, CreateEventComponent, EventRouteActivator, EventListResolver, CreateSessionComponent, SessionListComponent, DurationPipe } from './events'
-import { IClientNotificationService, IDirtyableComponent, CollapsibleWellComponent, TOASTR_TOKEN, ClientNotificationService } from './common';
+import { IClientNotificationService, IDirtyableComponent, CollapsibleWellComponent, TOASTR_TOKEN, ClientNotificationService, IBrowserUIService, JQUERY_TOKEN, BrowserUIService } from './common';
 import { Error404Component } from './errors';
 import { NavbarComponent } from './nav';
 import { AuthService } from './user';
 
-declare let toastr: IClientNotificationService;
+let toastr: IClientNotificationService = window['toastr'];
+let jQuery: IBrowserUIService = window['$'];
 
 @NgModule({
   imports: [
@@ -27,7 +28,9 @@ declare let toastr: IClientNotificationService;
     EventListResolver,
     AuthService,
     { provide: TOASTR_TOKEN, useValue: toastr },
-    { provide: ClientNotificationService, useExisting: TOASTR_TOKEN},
+    { provide: ClientNotificationService, useExisting: TOASTR_TOKEN },
+    { provide: JQUERY_TOKEN, useValue: jQuery },
+    { provide: BrowserUIService, useExisting: JQUERY_TOKEN },
     { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState },
   ],
   declarations: [

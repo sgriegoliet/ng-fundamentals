@@ -2,3 +2,4 @@ export {TOASTR_TOKEN, ClientNotificationService, IClientNotificationService} fro
 export * from './dirtyable.component'
 export * from './restricted-words.validator'
 export * from './collapsible-well.component'
+export * from './jquery.service'
