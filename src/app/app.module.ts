@@ -6,7 +6,7 @@ import { NgModule } from '@angular/core';
 import { EventsAppComponent } from './events-app.component';
 import { appRoutes } from './routes';
 
-import { EventsListComponent, EventThumbnailComponent, EventService, EventDetailsComponent, CreateEventComponent, EventRouteActivator, EventListResolver, CreateSessionComponent, SessionListComponent, DurationPipe } from './events'
+import { EventsListComponent, EventThumbnailComponent, EventService, EventDetailsComponent, CreateEventComponent, EventRouteActivator, EventListResolver, CreateSessionComponent, SessionListComponent, DurationPipe, UpvoteComponent, VoterService } from './events'
 import { IClientNotificationService, IDirtyableComponent, CollapsibleWellComponent, TOASTR_TOKEN, ClientNotificationService, IBrowserUIService, JQUERY_TOKEN, BrowserUIService, SimpleModalComponent, ModalTriggerDirective } from './common';
 import { Error404Component } from './errors';
 import { NavbarComponent } from './nav';
@@ -27,6 +27,7 @@ let jQuery: IBrowserUIService = window['$'];
     EventRouteActivator,
     EventListResolver,
     AuthService,
+    VoterService,
     { provide: TOASTR_TOKEN, useValue: toastr },
     { provide: ClientNotificationService, useExisting: TOASTR_TOKEN },
     { provide: JQUERY_TOKEN, useValue: jQuery },
@@ -46,7 +47,8 @@ let jQuery: IBrowserUIService = window['$'];
     CollapsibleWellComponent,
     SimpleModalComponent,
     ModalTriggerDirective,
-    DurationPipe
+    DurationPipe,
+    UpvoteComponent
   ],
   bootstrap: [EventsAppComponent]
 })
