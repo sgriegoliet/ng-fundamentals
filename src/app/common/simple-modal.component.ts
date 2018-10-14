@@ -12,6 +12,7 @@ import { BrowserUIService } from './jquery.service';
 })
 export class SimpleModalComponent {
     @Input() title: string = "";
+    @Input() elementId:string;
 
     constructor(private browserUIService: BrowserUIService) {
 
