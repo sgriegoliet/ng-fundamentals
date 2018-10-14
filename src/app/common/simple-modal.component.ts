@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { BrowserUIService } from './jquery.service';
+import { Component, Input, ViewChild, ElementRef, Inject } from '@angular/core';
+import { JQUERY_TOKEN } from './jquery.service';
 
 @Component({
     selector: 'simple-modal',
@@ -13,8 +13,13 @@ import { BrowserUIService } from './jquery.service';
 export class SimpleModalComponent {
     @Input() title: string = "";
     @Input() elementId:string;
+    @ViewChild('modalContainer') containerElement:ElementRef;
 
-    constructor(private browserUIService: BrowserUIService) {
+    constructor(@Inject(JQUERY_TOKEN) private $: any) {
 
+    }
+
+    closeModal(){
+        this.$(this.containerElement.nativeElement).modal('hide');
     }
 }
