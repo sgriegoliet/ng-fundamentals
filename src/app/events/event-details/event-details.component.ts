@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute, Params } from '@angular/router'
 
 import { EventService, IEvent, ISession } from '../shared';
 
@@ -36,8 +36,9 @@ export class EventDetailsComponent implements OnInit {
     }
 
     ngOnInit() {
-        const eventId = +this.route.snapshot.params['id'];
-        this.event = this.eventService.getEvent(eventId);
+        this.route.params.forEach((params:Params)=>{
+            this.event = this.eventService.getEvent(+params['id'])
+        })
     }
     addSession() {
         this.addMode = true;
