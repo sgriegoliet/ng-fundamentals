@@ -7,7 +7,7 @@ import { EventsAppComponent } from './events-app.component';
 import { appRoutes } from './routes';
 
 import { EventsListComponent, EventThumbnailComponent, EventService, EventDetailsComponent, CreateEventComponent, EventRouteActivator, EventListResolver, CreateSessionComponent, SessionListComponent, DurationPipe } from './events'
-import { IClientNotificationService, IDirtyableComponent, CollapsibleWellComponent, TOASTR_TOKEN, ClientNotificationService } from './common';
+import { IClientNotificationService, IDirtyableComponent, CollapsibleWellComponent, TOASTR_TOKEN, ClientNotificationService, ToasterNotificationService } from './common';
 import { Error404Component } from './errors';
 import { NavbarComponent } from './nav';
 import { AuthService } from './user';
@@ -26,7 +26,7 @@ declare let toastr: IClientNotificationService;
     EventRouteActivator,
     EventListResolver,
     AuthService,
-    ClientNotificationService,
+    { provide: ClientNotificationService, useClass: ToasterNotificationService},
     { provide: TOASTR_TOKEN, useValue: toastr },
     { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState },
   ],

@@ -9,8 +9,24 @@ export interface IClientNotificationService {
     error(message: string, title?: string);
 }
 
-@Injectable()
+// pretend to be an interface
 export class ClientNotificationService implements IClientNotificationService {
+    success(message: string, title?: string) {
+        throw new Error("Method not implemented.");
+    } 
+    info(message: string, title?: string) {
+        throw new Error("Method not implemented.");
+    }
+    warning(message: string, title?: string) {
+        throw new Error("Method not implemented.");
+    }
+    error(message: string, title?: string) {
+        throw new Error("Method not implemented.");
+    }
+}
+
+@Injectable()
+export class ToasterNotificationService implements IClientNotificationService {
     constructor(@Inject(TOASTR_TOKEN) private toastr: IClientNotificationService) {
     }
 
