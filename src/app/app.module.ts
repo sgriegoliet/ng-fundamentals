@@ -6,7 +6,7 @@ import { NgModule } from '@angular/core';
 import { EventsAppComponent } from './events-app.component';
 import { appRoutes } from './routes';
 
-import { EventsListComponent, EventThumbnailComponent, EventService, EventDetailsComponent, CreateEventComponent, EventRouteActivator, EventListResolver, CreateSessionComponent, SessionListComponent, DurationPipe, UpvoteComponent, VoterService } from './events'
+import { EventsListComponent, EventThumbnailComponent, EventService, EventDetailsComponent, CreateEventComponent, EventRouteActivator, EventListResolver, CreateSessionComponent, SessionListComponent, DurationPipe, UpvoteComponent, VoterService, LocationValidator } from './events'
 import { IClientNotificationService, IDirtyableComponent, CollapsibleWellComponent, TOASTR_TOKEN, ClientNotificationService, IBrowserUIService, JQUERY_TOKEN, BrowserUIService, SimpleModalComponent, ModalTriggerDirective } from './common';
 import { Error404Component } from './errors';
 import { NavbarComponent } from './nav';
@@ -48,6 +48,7 @@ let jQuery: IBrowserUIService = window['$'];
     SimpleModalComponent,
     ModalTriggerDirective,
     DurationPipe,
+    LocationValidator,
     UpvoteComponent
   ],
   bootstrap: [EventsAppComponent]
