@@ -10,6 +10,11 @@ export enum SessionFilterOptions {
     Advanced = 4
 }
 
+export enum SessionSortOptions {
+    Name = 1,
+    Votes = 2,
+}
+
 
 @Component({
     templateUrl: 'event-details.component.html',
@@ -23,7 +28,9 @@ export class EventDetailsComponent implements OnInit {
     event: IEvent;
     addMode: boolean = false;
     filterBy: SessionFilterOptions = SessionFilterOptions.All;
+    sortedBy: SessionSortOptions = SessionSortOptions.Name;
     FilterBy = SessionFilterOptions;
+    SortedBy = SessionSortOptions;
 
     constructor(private eventService: EventService, private route: ActivatedRoute) {
     }
@@ -54,5 +61,13 @@ export class EventDetailsComponent implements OnInit {
 
     isFilteredBy(filterBy: SessionFilterOptions): boolean {
         return this.filterBy === filterBy;
+    }
+
+    setSortedBy(sortedBy: SessionSortOptions) {
+        this.sortedBy = sortedBy;
+    }
+
+    isSortedBy(sortedBy: SessionSortOptions): boolean {
+        return this.sortedBy === sortedBy;
     }
 }
