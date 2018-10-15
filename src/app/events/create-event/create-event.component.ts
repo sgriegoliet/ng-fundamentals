@@ -10,13 +10,14 @@ export class CreateEventComponent implements IDirtyableComponent {
     constructor(private router: Router, private eventService: EventService) {
     }
 
-    isCreateFormDirty:boolean = true;
+    isCreateFormDirty: boolean = true;
     newEventForm: IEvent;
 
     saveEvent(formValues) {
-        this.eventService.saveEvent(formValues);
-        this.isCreateFormDirty = false;
-        this.router.navigate(['/events']);
+        this.eventService.saveEvent(formValues).subscribe(() => {
+            this.isCreateFormDirty = false;
+            this.router.navigate(['/events']);
+        });
     }
 
     cancel() {
