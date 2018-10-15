@@ -1,4 +1,4 @@
-import { InjectionToken } from '@angular/core'
+import { InjectionToken } from '@angular/core';
 
 export let TOASTR_TOKEN: InjectionToken<IClientNotificationService> = new InjectionToken<IClientNotificationService>('toastr');
 
@@ -12,15 +12,15 @@ export interface IClientNotificationService {
 // pretend to be an interface
 export class ClientNotificationService implements IClientNotificationService {
     success(message: string, title?: string) {
-        throw new Error("Method not implemented.");
-    } 
+        throw new Error('Method not implemented.');
+    }
     info(message: string, title?: string) {
-        throw new Error("Method not implemented.");
+        throw new Error('Method not implemented.');
     }
     warning(message: string, title?: string) {
-        throw new Error("Method not implemented.");
+        throw new Error('Method not implemented.');
     }
     error(message: string, title?: string) {
-        throw new Error("Method not implemented.");
+        throw new Error('Method not implemented.');
     }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component } from '@angular/core';
 import { AuthService } from '../user';
 import { ISession, EventService } from '../events';
 import { Router } from '@angular/router';
@@ -9,13 +9,13 @@ import { Router } from '@angular/router';
     styleUrls: ['navbar.component.css']
 })
 export class NavbarComponent {
-    searchTerm: string = "";
+    searchTerm = '';
     foundSessions: ISession[] = [];
 
-    constructor(private authService: AuthService, private eventService: EventService, private router:Router) { }
+    constructor(private authService: AuthService, private eventService: EventService, private router: Router) { }
 
     logout() {
-        this.authService.logoutUser().subscribe(()=>{
+        this.authService.logoutUser().subscribe(() => {
             this.router.navigate(['/user/login']);
         });
     }

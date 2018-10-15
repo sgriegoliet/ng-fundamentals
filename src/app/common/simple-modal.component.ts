@@ -11,17 +11,17 @@ import { JQUERY_TOKEN } from './jquery.service';
     ]
 })
 export class SimpleModalComponent {
-    @Input() title: string = "";
-    @Input() elementId:string;
-    @Input() closeOnBodyClick:string="true";
-    @ViewChild('modalContainer') containerElement:ElementRef;
+    @Input() title = '';
+    @Input() elementId: string;
+    @Input() closeOnBodyClick = 'true';
+    @ViewChild('modalContainer') containerElement: ElementRef;
 
     constructor(@Inject(JQUERY_TOKEN) private $: any) {
 
     }
 
-    closeModal(){
-        if (this.closeOnBodyClick.toLocaleLowerCase() == "true"){
+    closeModal() {
+        if (this.closeOnBodyClick.toLocaleLowerCase() == 'true') {
             this.$(this.containerElement.nativeElement).modal('hide');
         }
     }

@@ -1,3 +1,3 @@
-export interface IDirtyableComponent{
-    isDirty:()=>boolean;
+export interface IDirtyableComponent {
+    isDirty: () => boolean;
 }

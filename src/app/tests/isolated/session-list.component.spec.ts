@@ -1,4 +1,4 @@
-import { SessionListComponent, ISession, SessionFilterOptions, SessionSortOptions } from "../../events";
+import { SessionListComponent, ISession, SessionFilterOptions, SessionSortOptions } from '../../events';
 
 describe('SessionListComponent', () => {
     let componentUnderTest: SessionListComponent;
@@ -6,7 +6,7 @@ describe('SessionListComponent', () => {
 
     beforeEach(() => {
         componentUnderTest = new SessionListComponent(mockAuthService, mockVoterService);
-    })
+    });
 
     describe('ngOnChanges', () => {
         it('should filter the intermediate sessions correctly', () => {
@@ -22,9 +22,9 @@ describe('SessionListComponent', () => {
             componentUnderTest.ngOnChanges();
 
             expect(componentUnderTest.visibleSessions.length).toBe(2);
-            expect(componentUnderTest.visibleSessions.map(session => session.level.toLocaleLowerCase)).not.toContain(() => SessionFilterOptions[SessionFilterOptions.Beginner].toLocaleLowerCase())
-            expect(componentUnderTest.visibleSessions.map(session => session.level.toLocaleLowerCase)).not.toContain(() => SessionFilterOptions[SessionFilterOptions.Advanced].toLocaleLowerCase())
-        })
+            expect(componentUnderTest.visibleSessions.map(session => session.level.toLocaleLowerCase)).not.toContain(() => SessionFilterOptions[SessionFilterOptions.Beginner].toLocaleLowerCase());
+            expect(componentUnderTest.visibleSessions.map(session => session.level.toLocaleLowerCase)).not.toContain(() => SessionFilterOptions[SessionFilterOptions.Advanced].toLocaleLowerCase());
+        });
 
         it('should filter the beginner sessions correctly', () => {
             componentUnderTest.sessions = <ISession[]>[{ name: 'a', level: 'intermediate' },
@@ -37,9 +37,9 @@ describe('SessionListComponent', () => {
             componentUnderTest.ngOnChanges();
 
             expect(componentUnderTest.visibleSessions.length).toBe(1);
-            expect(componentUnderTest.visibleSessions.map(session => session.level.toLocaleLowerCase)).not.toContain(() => SessionFilterOptions[SessionFilterOptions.Intermediate].toLocaleLowerCase())
-            expect(componentUnderTest.visibleSessions.map(session => session.level.toLocaleLowerCase)).not.toContain(() => SessionFilterOptions[SessionFilterOptions.Advanced].toLocaleLowerCase())
-        })
+            expect(componentUnderTest.visibleSessions.map(session => session.level.toLocaleLowerCase)).not.toContain(() => SessionFilterOptions[SessionFilterOptions.Intermediate].toLocaleLowerCase());
+            expect(componentUnderTest.visibleSessions.map(session => session.level.toLocaleLowerCase)).not.toContain(() => SessionFilterOptions[SessionFilterOptions.Advanced].toLocaleLowerCase());
+        });
 
         it('should filter the advanced sessions correctly', () => {
             componentUnderTest.sessions = <ISession[]>[{ name: 'a', level: 'intermediate' },
@@ -52,9 +52,9 @@ describe('SessionListComponent', () => {
             componentUnderTest.ngOnChanges();
 
             expect(componentUnderTest.visibleSessions.length).toBe(1);
-            expect(componentUnderTest.visibleSessions.map(session => session.level.toLocaleLowerCase)).not.toContain(() => SessionFilterOptions[SessionFilterOptions.Intermediate].toLocaleLowerCase())
-            expect(componentUnderTest.visibleSessions.map(session => session.level.toLocaleLowerCase)).not.toContain(() => SessionFilterOptions[SessionFilterOptions.Beginner].toLocaleLowerCase())
-        })
+            expect(componentUnderTest.visibleSessions.map(session => session.level.toLocaleLowerCase)).not.toContain(() => SessionFilterOptions[SessionFilterOptions.Intermediate].toLocaleLowerCase());
+            expect(componentUnderTest.visibleSessions.map(session => session.level.toLocaleLowerCase)).not.toContain(() => SessionFilterOptions[SessionFilterOptions.Beginner].toLocaleLowerCase());
+        });
 
         it('should sort the sessions by name correctly', () => {
             componentUnderTest.sessions = <ISession[]>[{ name: 'x', level: 'intermediate' },
@@ -67,7 +67,7 @@ describe('SessionListComponent', () => {
             componentUnderTest.ngOnChanges();
 
             expect(componentUnderTest.visibleSessions.map(session => session.name)).toEqual(['b', 'x', 'z']);
-        })
+        });
 
         it('should sort the sessions by name correctly', () => {
             componentUnderTest.sessions = <ISession[]>[
@@ -83,6 +83,6 @@ describe('SessionListComponent', () => {
             componentUnderTest.ngOnChanges();
 
             expect(componentUnderTest.visibleSessions.map(session => session.name)).toEqual(['b', 'a', 'd', 'c']);
-        })
-    })
+        });
+    });
 });

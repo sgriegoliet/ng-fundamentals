@@ -1,5 +1,5 @@
-import { Component } from '@angular/core'
-import { Router } from '@angular/router'
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { IDirtyableComponent } from '../../common';
 import { IEvent, EventService } from '../shared';
 
@@ -10,7 +10,7 @@ export class CreateEventComponent implements IDirtyableComponent {
     constructor(private router: Router, private eventService: EventService) {
     }
 
-    isCreateFormDirty: boolean = true;
+    isCreateFormDirty = true;
     newEventForm: IEvent;
 
     saveEvent(formValues) {
@@ -24,5 +24,5 @@ export class CreateEventComponent implements IDirtyableComponent {
         this.router.navigate(['/events']);
     }
 
-    isDirty() { return this.isCreateFormDirty; };
+    isDirty() { return this.isCreateFormDirty; }
 }

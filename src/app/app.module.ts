@@ -7,14 +7,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { EventsAppComponent } from './events-app.component';
 import { appRoutes } from './routes';
 
-import { EventsListComponent, EventThumbnailComponent, EventService, EventDetailsComponent, CreateEventComponent, EventsListResolver, CreateSessionComponent, SessionListComponent, DurationPipe, UpvoteComponent, VoterService, LocationValidator, EventResolver } from './events'
+import { EventsListComponent, EventThumbnailComponent, EventService, EventDetailsComponent, CreateEventComponent, EventsListResolver, CreateSessionComponent, SessionListComponent, DurationPipe, UpvoteComponent, VoterService, LocationValidator, EventResolver } from './events';
 import { IClientNotificationService, IDirtyableComponent, CollapsibleWellComponent, TOASTR_TOKEN, ClientNotificationService, IBrowserUIService, JQUERY_TOKEN, BrowserUIService, SimpleModalComponent, ModalTriggerDirective } from './common';
 import { Error404Component } from './errors';
 import { NavbarComponent } from './nav';
 import { AuthService } from './user';
 
-let toastr: IClientNotificationService = window['toastr'];
-let jQuery: IBrowserUIService = window['$'];
+const toastr: IClientNotificationService = window['toastr'];
+const jQuery: IBrowserUIService = window['$'];
 
 @NgModule({
   imports: [

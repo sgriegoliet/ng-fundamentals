@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core'
+import { Injectable } from '@angular/core';
 import { IUser } from './user.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, } from 'rxjs';
@@ -6,23 +6,23 @@ import { catchError, tap, map } from 'rxjs/operators';
 
 @Injectable()
 export class AuthService {
-    currentUser: IUser
+    currentUser: IUser;
 
     constructor(private http: HttpClient) {
 
     }
 
     loginUser(userName: string, password: string): Observable<any> {
-        let options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
-        let loginInfo = { username: userName, password: password };
+        const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+        const loginInfo = { username: userName, password: password };
         return this.http.post('/api/login', loginInfo, options)
-            .pipe(map(data => { return <IUser>data['user']; }))
+            .pipe(map(data => <IUser>data['user']))
             .pipe(tap(user => { this.currentUser = user; }))
-            .pipe(catchError((error: any) => { return of(false); }));
+            .pipe(catchError((error: any) => of(false)));
     }
 
     updateCurrentUser(firstName: string, lastName: string): Observable<IUser> {
-        let options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+        const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
         this.currentUser.firstName = firstName;
         this.currentUser.lastName = lastName;
         return this.http.put(`/api/users/${this.currentUser.id}`, this.currentUser, options)
@@ -30,9 +30,9 @@ export class AuthService {
     }
 
     logoutUser(): Observable<any> {
-        let options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+        const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
         return this.http.post('/api/logout', {}, options)
-            .pipe(tap(() => { this.currentUser = null; }))
+            .pipe(tap(() => { this.currentUser = null; }));
     }
 
     isAuthenticated() {

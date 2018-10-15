@@ -1,1 +1,1 @@
-export * from './create-session.component'
+export * from './create-session.component';

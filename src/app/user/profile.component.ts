@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core'
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
@@ -25,19 +25,19 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    let currentUser = this.authService.currentUser;
+    const currentUser = this.authService.currentUser;
     this.firstName = new FormControl(currentUser.firstName, [Validators.required, Validators.pattern('[a-zA-Z].*')]);
     this.lastName = new FormControl(currentUser.lastName, Validators.required);
     this.profileForm = new FormGroup({
       firstName: this.firstName,
       lastName: this.lastName
-    })
+    });
   }
 
   saveProfile(formValues) {
     if (this.profileForm.valid) {
       this.authService.updateCurrentUser(formValues.firstName, formValues.lastName).subscribe(() => {
-        this.clientNotificationService.success(`Successfully updated name to ${this.firstName.value} ${this.lastName.value}.`)
+        this.clientNotificationService.success(`Successfully updated name to ${this.firstName.value} ${this.lastName.value}.`);
         this.router.navigate(['events']);
       });
     }

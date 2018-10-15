@@ -1,5 +1,5 @@
-import { Directive, OnInit, Inject, ElementRef, Input } from "@angular/core";
-import { JQUERY_TOKEN } from "./jquery.service";
+import { Directive, OnInit, Inject, ElementRef, Input } from '@angular/core';
+import { JQUERY_TOKEN } from './jquery.service';
 
 @Directive({
     selector: '[modal-trigger]'
