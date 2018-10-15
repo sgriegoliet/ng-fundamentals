@@ -1,4 +1,4 @@
-import { TestBed, async, ComponentFixture } from '@angular/core/testing'
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
 import { SessionListComponent, VoterService, ISession, SessionFilterOptions, SessionSortOptions, DurationPipe } from '../../events';
 import { AuthService, IUser } from '../../user';
@@ -12,11 +12,11 @@ describe('SessionListComponent', () => {
     let debugElement: DebugElement;
 
     beforeEach(async(() => {
-        let mockAuthService = {
+        const mockAuthService = {
             isAuthenticated: () => true,
             currentUser: <IUser>{ userName: 'steve' }
         };
-        let mockVoterService = {
+        const mockVoterService = {
             userHasVoted: () => true
         };
 
@@ -41,11 +41,15 @@ describe('SessionListComponent', () => {
         component = fixture.componentInstance;
         element = fixture.nativeElement;
         debugElement = fixture.debugElement;
-    })
+    });
 
     describe('initial display', () => {
         it('should have the correct session title', () => {
-            component.sessions = <ISession[]>[{ id: 3, name: 'Session 1', presenter: 'Steve', duration: 1, level: 'beginner', abstract: 'abstract', voters: ['john'] }]
+            const session = {
+                id: 3, name: 'Session 1', presenter: 'Steve', duration: 1,
+                level: 'beginner', abstract: 'abstract', voters: ['john']
+            };
+            component.sessions = <ISession[]>[session];
             component.filterBy = SessionFilterOptions.All;
             component.sortedBy = SessionSortOptions.Votes;
             component.eventId = 4;
@@ -53,11 +57,15 @@ describe('SessionListComponent', () => {
             component.ngOnChanges();
             fixture.detectChanges();
 
-            expect(element.querySelector("[well-title]").textContent).toContain('Session 1');
-        })
+            expect(element.querySelector('[well-title]').textContent).toContain('Session 1');
+        });
 
         it('should have the correct duration text', () => {
-            component.sessions = <ISession[]>[{ id: 3, name: 'Session 1', presenter: 'Steve', duration: 1, level: 'beginner', abstract: 'abstract', voters: ['john'] }]
+            const session = {
+                id: 3, name: 'Session 1', presenter: 'Steve', duration: 1,
+                level: 'beginner', abstract: 'abstract', voters: ['john']
+            };
+            component.sessions = <ISession[]>[session];
             component.filterBy = SessionFilterOptions.All;
             component.sortedBy = SessionSortOptions.Votes;
             component.eventId = 4;
@@ -65,7 +73,7 @@ describe('SessionListComponent', () => {
             component.ngOnChanges();
             fixture.detectChanges();
 
-            expect(debugElement.query(By.css("div[well-body] span")).nativeElement.textContent).toContain('Half Hour');
-        })
-    })
-})
+            expect(debugElement.query(By.css('div[well-body] span')).nativeElement.textContent).toContain('Half Hour');
+        });
+    });
+});

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core'
-import { ActivatedRoute, Params } from '@angular/router'
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 
 import { EventService, IEvent, ISession } from '../shared';
 
@@ -19,14 +19,14 @@ export enum SessionSortOptions {
 @Component({
     templateUrl: 'event-details.component.html',
     styles: [
-        ".event-image {height:100px;}",
-        ".container{padding-left:20px;padding-right:20px;}",
-        "a {cursor:pointer}",
+        '.event-image {height:100px;}',
+        '.container{padding-left:20px;padding-right:20px;}',
+        'a {cursor:pointer}',
     ]
 })
 export class EventDetailsComponent implements OnInit {
     event: IEvent;
-    addMode: boolean = false;
+    addMode = false;
     filterBy: SessionFilterOptions = SessionFilterOptions.All;
     sortedBy: SessionSortOptions = SessionSortOptions.Name;
     FilterBy = SessionFilterOptions;
@@ -39,7 +39,7 @@ export class EventDetailsComponent implements OnInit {
         this.route.data.forEach((data) => {
             this.event = data['event'];
             this.addMode = false;
-        })
+        });
     }
     addSession() {
         this.addMode = true;
@@ -49,7 +49,7 @@ export class EventDetailsComponent implements OnInit {
         const nextId = Math.max.apply(null, this.event.sessions.map(s => s.id));
         session.id = nextId + 1;
         this.event.sessions.push(session);
-        this.eventService.updateEvent(this.event).subscribe(()=>{
+        this.eventService.updateEvent(this.event).subscribe(() => {
             this.addMode = false;
         });
     }

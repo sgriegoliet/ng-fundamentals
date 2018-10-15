@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core'
+import { Injectable } from '@angular/core';
 import { ISession } from './event.model';
 import { IUser } from 'src/app/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -12,7 +12,7 @@ export class VoterService {
   }
 
   deleteVoter(eventId: number, session: ISession, user: IUser): Observable<ISession> {
-    session.voters = session.voters.filter(voter => voter !== user.userName)
+    session.voters = session.voters.filter(voter => voter !== user.userName);
 
     const url = `/api/events/${eventId}/sessions/${session.id}/voters/${user.userName}`;
     return this.http.delete<ISession>(url).pipe(catchError(this.handleError<ISession>('deleteVoter')));
@@ -27,13 +27,13 @@ export class VoterService {
   }
 
   userHasVoted(session: ISession, user: IUser): boolean {
-    return session.voters.findIndex(voter => voter.toLocaleLowerCase() == user.userName) >= 0;
+    return session.voters.findIndex(voter => voter.toLocaleLowerCase() === user.userName) >= 0;
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
       return of(result as T);
-    }
+    };
   }
 }

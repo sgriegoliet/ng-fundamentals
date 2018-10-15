@@ -20,8 +20,8 @@ export interface ISession {
     voters: string[];
 }
 
-export interface ILocation{
-    address:string;
-    city:string;
+export interface ILocation {
+    address: string;
+    city: string;
     country: string;
 }
