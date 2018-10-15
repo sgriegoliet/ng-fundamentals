@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EventsAppComponent } from './events-app.component';
 import { appRoutes } from './routes';
 
-import { EventsListComponent, EventThumbnailComponent, EventService, EventDetailsComponent, CreateEventComponent, EventRouteActivator, EventListResolver, CreateSessionComponent, SessionListComponent, DurationPipe, UpvoteComponent, VoterService, LocationValidator } from './events'
+import { EventsListComponent, EventThumbnailComponent, EventService, EventDetailsComponent, CreateEventComponent, EventsListResolver, CreateSessionComponent, SessionListComponent, DurationPipe, UpvoteComponent, VoterService, LocationValidator, EventResolver } from './events'
 import { IClientNotificationService, IDirtyableComponent, CollapsibleWellComponent, TOASTR_TOKEN, ClientNotificationService, IBrowserUIService, JQUERY_TOKEN, BrowserUIService, SimpleModalComponent, ModalTriggerDirective } from './common';
 import { Error404Component } from './errors';
 import { NavbarComponent } from './nav';
@@ -26,8 +26,8 @@ let jQuery: IBrowserUIService = window['$'];
   ],
   providers: [
     EventService,
-    EventRouteActivator,
-    EventListResolver,
+    EventResolver,
+    EventsListResolver,
     AuthService,
     VoterService,
     { provide: TOASTR_TOKEN, useValue: toastr },
