@@ -22,9 +22,10 @@ export class EventService {
       .pipe(catchError(this.handleError<IEvent>('saveEvent')));
   }
 
-  updateEvent(event: IEvent) {
-    let index = EVENTS.findIndex(x => x.id == event.id);
-    EVENTS[index] = event;
+  updateEvent(event: IEvent): Observable<IEvent> {
+    let options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+    return this.http.post<IEvent>('/api/events', event, options)
+      .pipe(catchError(this.handleError<IEvent>('updateEvent')));
   }
 
   getEvent(id: number): Observable<IEvent> {
