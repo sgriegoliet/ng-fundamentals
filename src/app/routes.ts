@@ -1,6 +1,9 @@
 import { Routes } from '@angular/router';
 
-import { EventsListComponent, EventDetailsComponent, CreateEventComponent, EventsListResolver, CreateSessionComponent, EventResolver } from './events';
+import {
+    EventsListComponent, EventDetailsComponent, CreateEventComponent,
+    EventsListResolver, CreateSessionComponent, EventResolver
+} from './events';
 import { Error404Component } from './errors';
 
 export const appRoutes: Routes = [
@@ -10,5 +13,5 @@ export const appRoutes: Routes = [
     { path: 'events/session/new', component: CreateSessionComponent },
     { path: '404', component: Error404Component },
     { path: '', redirectTo: '/events', pathMatch: 'full' },
-    { path: 'user', loadChildren: './user/user.module#userModule' },
+    { path: 'user', loadChildren: './user/user.module#UserModule' },
 ];

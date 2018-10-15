@@ -35,7 +35,7 @@ export class CreateSessionComponent implements OnInit {
     }
 
     validate(field: string, validator: string) {
-        if (validator == undefined) {
+        if (validator === undefined) {
             return !(this[field].invalid && this[field].dirty);
         } else {
             return !(this[field].invalid && this[field].dirty && this[field].errors[validator]);

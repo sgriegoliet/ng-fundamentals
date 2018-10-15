@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 @Component({
-    selector: 'upvote',
+    selector: 'up-vote',
     templateUrl: 'upvote.component.html',
     styleUrls: ['upvote.component.css']
 })

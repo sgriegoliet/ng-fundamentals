@@ -4,7 +4,7 @@ import { ISession, EventService } from '../events';
 import { Router } from '@angular/router';
 
 @Component({
-    selector: 'navbar',
+    selector: 'nav-bar',
     templateUrl: 'navbar.component.html',
     styleUrls: ['navbar.component.css']
 })

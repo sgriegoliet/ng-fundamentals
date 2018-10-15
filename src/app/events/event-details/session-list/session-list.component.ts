@@ -4,7 +4,6 @@ import { SessionFilterOptions, SessionSortOptions } from '../event-details.compo
 import { AuthService } from 'src/app/user';
 import { Observable } from 'rxjs';
 @Component({
-    // tslint:disable-next-line:component-selector
     selector: 'session-list',
     templateUrl: 'session-list.component.html'
 })

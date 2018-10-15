@@ -7,14 +7,21 @@ import { HttpClientModule } from '@angular/common/http';
 import { EventsAppComponent } from './events-app.component';
 import { appRoutes } from './routes';
 
-import { EventsListComponent, EventThumbnailComponent, EventService, EventDetailsComponent, CreateEventComponent, EventsListResolver, CreateSessionComponent, SessionListComponent, DurationPipe, UpvoteComponent, VoterService, LocationValidator, EventResolver } from './events';
-import { IClientNotificationService, IDirtyableComponent, CollapsibleWellComponent, TOASTR_TOKEN, ClientNotificationService, IBrowserUIService, JQUERY_TOKEN, BrowserUIService, SimpleModalComponent, ModalTriggerDirective } from './common';
+import {
+  EventsListComponent, EventThumbnailComponent, EventService, EventDetailsComponent, CreateEventComponent,
+  EventsListResolver, CreateSessionComponent, SessionListComponent, DurationPipe, UpvoteComponent, VoterService,
+  LocationValidator, EventResolver
+} from './events';
+import {
+  IClientNotificationService, IDirtyableComponent, CollapsibleWellComponent, TOASTR_TOKEN, ClientNotificationService,
+  JQUERY_TOKEN, SimpleModalComponent, ModalTriggerDirective
+} from './common';
 import { Error404Component } from './errors';
 import { NavbarComponent } from './nav';
 import { AuthService } from './user';
 
 const toastr: IClientNotificationService = window['toastr'];
-const jQuery: IBrowserUIService = window['$'];
+const jQuery: any = window['$'];
 
 @NgModule({
   imports: [
@@ -33,7 +40,6 @@ const jQuery: IBrowserUIService = window['$'];
     { provide: TOASTR_TOKEN, useValue: toastr },
     { provide: ClientNotificationService, useExisting: TOASTR_TOKEN },
     { provide: JQUERY_TOKEN, useValue: jQuery },
-    { provide: BrowserUIService, useExisting: JQUERY_TOKEN },
     { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState },
   ],
   declarations: [

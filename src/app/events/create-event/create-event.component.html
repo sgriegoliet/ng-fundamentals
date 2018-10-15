@@ -27,7 +27,7 @@
                 placeholder="event price..." />
         </div>
 
-        <div ngModelGroup="location" validateLocation #locationGroup="ngModelGroup">
+        <div ngModelGroup="location" validate-location #locationGroup="ngModelGroup">
             <div class="form-group">
                 <label for="address">Event Location:</label>
                 <em *ngIf="locationGroup?.invalid && locationGroup?.touched">You must enter either a full address OR an

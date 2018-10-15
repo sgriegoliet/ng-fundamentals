@@ -3,7 +3,7 @@ import { AuthService } from './user';
 
 @Component({
   selector: 'events-app',
-  template: `<navbar></navbar>
+  template: `<nav-bar></nav-bar>
   <router-outlet></router-outlet>`,
 })
 export class EventsAppComponent implements OnInit {

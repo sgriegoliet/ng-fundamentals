@@ -14,8 +14,8 @@ describe('VoterService', () => {
 
     describe('deleteVoter', () => {
         it('should remove the voter form the list of voters', () => {
-            let session = { id: 1, voters: ['joe', 'john'] };
-            let user = {userName: 'joe'};
+            const session = { id: 1, voters: ['joe', 'john'] };
+            const user = {userName: 'joe'};
 
             mockHttp.delete.and.returnValue(of(false));
             voterService.deleteVoter(3, <ISession>session, <IUser>user);
@@ -25,8 +25,8 @@ describe('VoterService', () => {
         });
 
         it('should call http.delete with the right URL', () => {
-            let session = { id: 6, voters: ['joe', 'john'] };
-            let user = {userName: 'joe'};
+            const session = { id: 6, voters: ['joe', 'john'] };
+            const user = {userName: 'joe'};
 
             mockHttp.delete.and.returnValue(of(false));
             voterService.deleteVoter(3, <ISession>session, <IUser>user);
@@ -37,8 +37,8 @@ describe('VoterService', () => {
 
     describe('addVoter', () => {
         it('should add the voter form the list of voters', () => {
-            let session = { id: 1, voters: ['john'] };
-            let user = {userName: 'joe'};
+            const session = { id: 1, voters: ['john'] };
+            const user = {userName: 'joe'};
 
             mockHttp.post.and.returnValue(of(false));
             voterService.addVoter(3, <ISession>session, <IUser>user);
@@ -49,8 +49,8 @@ describe('VoterService', () => {
 
 
         it('should call http.post with the right URL and data', () => {
-            let session = { id: 6, voters: ['john'] };
-            let user = {userName: 'joe'};
+            const session = { id: 6, voters: ['john'] };
+            const user = {userName: 'joe'};
 
             mockHttp.post.and.returnValue(of(false));
             voterService.addVoter(3, <ISession>session, <IUser>user);
