@@ -16,10 +16,9 @@ export class AuthService {
         let options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
         let loginInfo = { username: userName, password: password };
         return this.http.post('/api/login', loginInfo, options)
-            .pipe(tap(data => { this.currentUser = <IUser>data['user']; }))
-            .pipe(catchError((error: any) => {
-                return of(false);
-            }));
+            .pipe(map(data => { return <IUser>data['user']; }))
+            .pipe(tap(user => { this.currentUser = user; }))
+            .pipe(catchError((error: any) => { return of(false); }));
     }
 
     updateCurrentUser(firstName: string, lastName: string): Observable<IUser> {
@@ -27,12 +26,13 @@ export class AuthService {
         this.currentUser.firstName = firstName;
         this.currentUser.lastName = lastName;
         return this.http.put(`/api/users/${this.currentUser.id}`, this.currentUser, options)
-            .pipe(map(data => { return <IUser>data['user']; }))
             .pipe(tap((user: IUser) => { this.currentUser = user; }));
     }
 
-    logoutUser() {
-        this.currentUser = null;
+    logoutUser(): Observable<any> {
+        let options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+        return this.http.post('/api/logout', {}, options)
+            .pipe(tap(() => { this.currentUser = null; }))
     }
 
     isAuthenticated() {
