@@ -66,7 +66,7 @@ describe('SessionListComponent', () => {
             component.ngOnChanges();
             fixture.detectChanges();
 
-            expect(element.querySelector("div[well-body] span").textContent).toContain('Half Hour');
+            expect(debugElement.query(By.css("div[well-body] span")).nativeElement.textContent).toContain('Half Hour');
         })
     })
 })
