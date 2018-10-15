@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import { IUser } from './user.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, tap, map } from 'rxjs/operators';
 
 @Injectable()
 export class AuthService {
@@ -22,9 +22,13 @@ export class AuthService {
             }));
     }
 
-    updateCurrentUser(firstName: string, lastName: string) {
+    updateCurrentUser(firstName: string, lastName: string): Observable<IUser> {
+        let options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
         this.currentUser.firstName = firstName;
         this.currentUser.lastName = lastName;
+        return this.http.put(`/api/users/${this.currentUser.id}`, this.currentUser, options)
+            .pipe(map(data => { return <IUser>data['user']; }))
+            .pipe(tap((user: IUser) => { this.currentUser = user; }));
     }
 
     logoutUser() {
@@ -35,13 +39,13 @@ export class AuthService {
         return !!this.currentUser;
     }
 
-    checkAuthenticationStatus(){
+    checkAuthenticationStatus() {
         this.http.get('/api/currentIdentity')
-        .pipe(tap(data=>{
-            if (data instanceof Object){
-                this.currentUser = <IUser>data;
-            }
-        }))
-        .subscribe();
+            .pipe(tap(data => {
+                if (data instanceof Object) {
+                    this.currentUser = <IUser>data;
+                }
+            }))
+            .subscribe();
     }
 }
