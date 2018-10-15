@@ -55,5 +55,34 @@ describe('SessionListComponent', () => {
             expect(componentUnderTest.visibleSessions.map(session => session.level.toLocaleLowerCase)).not.toContain(() => SessionFilterOptions[SessionFilterOptions.Intermediate].toLocaleLowerCase())
             expect(componentUnderTest.visibleSessions.map(session => session.level.toLocaleLowerCase)).not.toContain(() => SessionFilterOptions[SessionFilterOptions.Beginner].toLocaleLowerCase())
         })
+
+        it('should sort the sessions by name correctly', () => {
+            componentUnderTest.sessions = <ISession[]>[{ name: 'x', level: 'intermediate' },
+            { name: 'b', level: 'intermediate' },
+            { name: 'z', level: 'beginner' }];
+            componentUnderTest.filterBy = SessionFilterOptions.All;
+            componentUnderTest.eventId = 3;
+
+            componentUnderTest.sortedBy = SessionSortOptions.Name;
+            componentUnderTest.ngOnChanges();
+
+            expect(componentUnderTest.visibleSessions.map(session => session.name)).toEqual(['b', 'x', 'z']);
+        })
+
+        it('should sort the sessions by name correctly', () => {
+            componentUnderTest.sessions = <ISession[]>[
+                { name: 'a', level: 'intermediate', voters: ['1', '2'] },
+                { name: 'b', level: 'intermediate', voters: ['1', '2', '3'] },
+                { name: 'c', level: 'beginner', voters: [] },
+                { name: 'd', level: 'advanced', voters: ['1'] },
+            ];
+            componentUnderTest.filterBy = SessionFilterOptions.All;
+            componentUnderTest.eventId = 3;
+
+            componentUnderTest.sortedBy = SessionSortOptions.Votes;
+            componentUnderTest.ngOnChanges();
+
+            expect(componentUnderTest.visibleSessions.map(session => session.name)).toEqual(['b', 'a', 'd', 'c']);
+        })
     })
 });
