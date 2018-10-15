@@ -1,7 +1,7 @@
 import { of } from 'rxjs';
 
 import { IUser } from 'src/app/user';
-import { VoterService, ISession } from '../events';
+import { VoterService, ISession } from '../../events';
 
 
 describe('VoterService', () => {

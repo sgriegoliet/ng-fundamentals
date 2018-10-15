@@ -1,4 +1,4 @@
-import { SessionListComponent, ISession, SessionFilterOptions, SessionSortOptions } from "../events";
+import { SessionListComponent, ISession, SessionFilterOptions, SessionSortOptions } from "../../events";
 
 describe('SessionListComponent', () => {
     let componentUnderTest: SessionListComponent;
