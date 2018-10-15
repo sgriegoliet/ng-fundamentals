@@ -1,9 +1,8 @@
 import { TestBed, async, ComponentFixture } from '@angular/core/testing'
-import { DebugElement } from '@angular/core';
-import { SessionListComponent, VoterService, ISession, SessionFilterOptions, SessionSortOptions, UpvoteComponent, DurationPipe } from '../../events';
+import { DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
+import { SessionListComponent, VoterService, ISession, SessionFilterOptions, SessionSortOptions, DurationPipe } from '../../events';
 import { AuthService, IUser } from '../../user';
 import { By } from '@angular/platform-browser';
-import { CollapsibleWellComponent } from '../../common';
 
 
 describe('SessionListComponent', () => {
@@ -25,15 +24,15 @@ describe('SessionListComponent', () => {
             imports: [],
             declarations: [
                 SessionListComponent,
-                UpvoteComponent,
                 DurationPipe,
-                CollapsibleWellComponent
             ],
             providers: [
                 { provide: AuthService, useValue: mockAuthService },
                 { provide: VoterService, useValue: mockVoterService },
             ],
-            schemas: []
+            schemas: [
+                NO_ERRORS_SCHEMA
+            ]
         });
     }));
 
