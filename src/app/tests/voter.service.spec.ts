@@ -1,8 +1,7 @@
-import { VoterService } from './voter.service'
-import { ISession } from './event.model';
-import { IUser } from 'src/app/user';
 import { of } from 'rxjs';
-import { exec } from 'child_process';
+
+import { IUser } from 'src/app/user';
+import { VoterService, ISession } from '../events';
 
 
 describe('VoterService', () => {
