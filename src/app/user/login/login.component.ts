@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 export class LoginComponent {
     username: string;
     password: string;
-    mouseoverLogin:boolean;
+    mouseoverLogin: boolean;
+    loginInvalid:boolean = false;
 
     constructor(private authService: AuthService, private router: Router) {
     }
@@ -19,7 +20,14 @@ export class LoginComponent {
     }
 
     login(formValues) {
-        this.authService.loginUser(formValues.userName, formValues.password);
-        this.router.navigate(['events']);
+        this.authService.loginUser(formValues.userName, formValues.password).subscribe(response => {
+            if (!response) {
+                this.loginInvalid = true;
+            }
+            else {
+                this.loginInvalid = false;
+                this.router.navigate(['events']);
+            }
+        });
     }
 }
