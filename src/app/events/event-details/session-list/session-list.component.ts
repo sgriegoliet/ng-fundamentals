@@ -2,12 +2,14 @@ import { Component, Input, OnChanges } from '@angular/core'
 import { ISession, VoterService } from '../../shared';
 import { SessionFilterOptions, SessionSortOptions } from '../event-details.component';
 import { AuthService } from 'src/app/user';
+import { Observable } from 'rxjs';
 @Component({
     selector: 'session-list',
     templateUrl: 'session-list.component.html'
 })
 export class SessionListComponent implements OnChanges {
     @Input() sessions: ISession[];
+    @Input() eventId: number;
     @Input() filterBy: SessionFilterOptions
     @Input() sortedBy: SessionSortOptions
 
@@ -44,18 +46,16 @@ export class SessionListComponent implements OnChanges {
         }
     }
 
-
     toggleVote(session: ISession) {
-        if (this.userHasVoted(session)) {
-            this.voterService.deleteVoter(session, this.authService.currentUser);
-        }
-        else {
-            this.voterService.addVoter(session, this.authService.currentUser);
-        }
+        let voteChangeObservable: Observable<ISession> = this.userHasVoted(session)
+            ? this.voterService.deleteVoter(this.eventId, session, this.authService.currentUser)
+            : this.voterService.addVoter(this.eventId, session, this.authService.currentUser)
 
-        if (this.sortedBy === SessionSortOptions.Votes) {
-            this.visibleSessions.sort(sortByVotersDesc);
-        }
+        voteChangeObservable.subscribe(session => {
+            if (this.sortedBy === SessionSortOptions.Votes) {
+                this.visibleSessions.sort(sortByVotersDesc);
+            };
+        })
     }
 
     userHasVoted(session: ISession): boolean {
